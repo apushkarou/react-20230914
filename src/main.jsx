@@ -1,7 +1,10 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
-import { restaurant } from "./constants/mock";
+import { MainPage } from "./pages/Main/component";
 
 const rootElement = document.getElementById("root");
 const root = ReactDOM.createRoot(rootElement);
-root.render(<div></div>);
+root.render(
+  <div>
+    <MainPage />
+  </div>
+);
