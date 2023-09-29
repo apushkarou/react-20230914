@@ -1,12 +1,12 @@
 import React from "react";
-import { MenuItem } from "../MenuItem/component";
+import { Product } from "../Product/component";
 
 export const Menu = ({ menu }) => {
   return (
     <div>
       <h3>Menu</h3>
-      {menu.map((product) => (
-        <MenuItem key={product.id} product={product} />
+      {menu.map(({ id, ...product }) => (
+        <Product key={id} product={product} />
       ))}
     </div>
   );

@@ -2,12 +2,12 @@ import React from "react";
 import { Menu } from "../Menu/component";
 import { Reviews } from "../Reviews/component";
 
-export const Restaurant = ({ restaurantData }) => {
+export const Restaurant = ({ restaurant }) => {
   return (
     <div>
-      <h2>{restaurantData.name}</h2>
-      <Menu menu={restaurantData.menu} />
-      <Reviews reviews={restaurantData.reviews} />
+      <h2>{restaurant.name}</h2>
+      <Menu menu={restaurant.menu} />
+      <Reviews reviews={restaurant.reviews} />
     </div>
   );
 };

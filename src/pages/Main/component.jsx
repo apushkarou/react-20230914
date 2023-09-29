@@ -5,7 +5,7 @@ import { Restaurant } from "../../components/Restaurant/component";
 
 export const MainPage = () => {
   if (!restaurants?.length) {
-    return null;
+    return false;
   }
 
   const [activeRestaurant, setActiveRestaurant] = useState(restaurants[0]);
@@ -16,8 +16,8 @@ export const MainPage = () => {
 
   return (
     <div>
-      <RestaurantTabs handleClick={handleRestaurantClick} />
-      <Restaurant restaurantData={activeRestaurant} />
+      <RestaurantTabs handleRestaurantClick={handleRestaurantClick} />
+      <Restaurant restaurant={activeRestaurant} />
     </div>
   );
 };
