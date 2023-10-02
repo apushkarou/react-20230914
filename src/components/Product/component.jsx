@@ -1,27 +1,26 @@
-import { useState } from "react";
-import { Button } from "../Button/component";
+import React, { useState } from "react";
 
-export const Product = ({ name }) => {
+export const Product = ({ product }) => {
   const [amount, setAmount] = useState(0);
 
-  if (!name) {
-    return null;
-  }
-
   return (
-    <div>
-      {name} -
-      <Button
-        title="-"
-        onClick={() => setAmount(amount - 1)}
-        disabled={amount === 0}
-      />
+    <div style={{ display: "flex", gap: 10, marginBottom: 10 }}>
+      {product.name} | {product.price}$ | Quantity:
+      <button
+        onClick={() => {
+          if (amount > 0 && amount <= 5) setAmount(amount - 1);
+        }}
+      >
+        -
+      </button>
       {amount}
-      <Button
-        title="+"
-        onClick={() => setAmount(amount + 1)}
-        disabled={amount === 5}
-      />
+      <button
+        onClick={() => {
+          if (amount >= 0 && amount < 5) setAmount(amount + 1);
+        }}
+      >
+        +
+      </button>
     </div>
   );
 };
