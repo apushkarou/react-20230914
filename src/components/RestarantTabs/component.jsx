@@ -1,18 +1,29 @@
-import React from "react";
+import React, { useContext } from "react";
 import { restaurants } from "../../../materials/mock";
+import { Button } from "../Button/component";
+import styles from "./styles.module.scss";
+import { ThemeContext } from "../../contexts/ThemeProvider";
+import classNames from "classnames";
 
-export const RestaurantTabs = ({ handleRestaurantClick }) => {
+export const RestaurantTabs = ({
+  activeRestaurantId,
+  handleRestaurantClick,
+}) => {
+  const [theme] = useContext(ThemeContext);
+
   return (
-    <div style={{ display: "flex", gap: 10, marginBottom: 20 }}>
+    <div className={styles.root}>
       {restaurants.map(({ name, id }) => (
-        <button
+        <Button
           key={id}
+          className={classNames(`btn-primary-${theme}`, {
+            ["active"]: activeRestaurantId === id,
+          })}
           onClick={() => {
             handleRestaurantClick(id);
           }}
-        >
-          {name}
-        </button>
+          title={name}
+        />
       ))}
     </div>
   );
