@@ -1,6 +1,6 @@
 export const Theme = {
   Dark: "dark",
-  Light: "light",
+  Default: "light",
 };
 
 export const Order = {

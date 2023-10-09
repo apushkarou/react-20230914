@@ -1,7 +1,6 @@
-import React, { useContext, useReducer } from "react";
+import React, { useReducer } from "react";
 import styles from "./styles.module.scss";
 import { Button } from "../Button/component";
-import { ThemeContext } from "../../contexts/ThemeProvider";
 
 const initialForm = {
   name: "",
@@ -12,7 +11,7 @@ const initialForm = {
 const reducer = (state, { type, payload }) => {
   switch (type) {
     case "reset":
-      return payload;
+      return { ...initialForm };
     case "input:name":
       return {
         ...state,
@@ -36,7 +35,6 @@ const reducer = (state, { type, payload }) => {
 
 export const ReviewForm = ({ onClose }) => {
   const [state, dispatch] = useReducer(reducer, initialForm);
-  const [theme] = useContext(ThemeContext);
 
   return (
     <div className={styles.root}>
@@ -78,16 +76,12 @@ export const ReviewForm = ({ onClose }) => {
       <div className={styles["button-wrapper"]}>
         <Button
           title="Save"
-          className={`btn-primary-${theme}`}
+          className={"btn-primary"}
           onClick={() => {
             dispatch({ type: "reset", payload: initialForm });
           }}
         />
-        <Button
-          title="Cancel"
-          onClick={onClose}
-          className={`btn-primary-${theme}`}
-        />
+        <Button title="Cancel" onClick={onClose} className={"btn-primary"} />
       </div>
     </div>
   );

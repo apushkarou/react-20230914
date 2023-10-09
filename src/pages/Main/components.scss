@@ -13,21 +13,15 @@
     outline: none;
     text-align: center;
     color: var(--color-white);
+    background-color: var(--color-red);
 
     &:disabled {
         cursor: not-allowed;
     }
 
-    &.btn-primary {
-        &-dark {
-            background-color: var(--color-black);
-        }
-        
-        &-light {
-            background-color: var(--color-red);
-        }
+    &.dark {
+        background-color: var(--color-black);
     }
-
     &.active {
         background-color: var(--color-white);
         color: var(--color-black);
@@ -41,14 +35,6 @@
         padding: 0;
         width: 24px;
         height: 24px;
-
-        &-dark {
-            background-color: var(--color-black);
-        }
-        
-        &-light {
-            background-color: var(--color-red);
-        }
 
         &[disabled] {
             opacity: 0.4;

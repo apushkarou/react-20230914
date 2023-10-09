@@ -1,19 +1,17 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import styles from "./styles.module.scss";
 import { Order } from "../../constants/matcher";
 import { Button } from "../Button/component";
-import { ThemeContext } from "../../contexts/ThemeProvider";
 import classNames from "classnames";
 
 export const Product = ({ product }) => {
   const [amount, setAmount] = useState(0);
-  const [theme] = useContext(ThemeContext);
 
   return (
     <div className={styles.root}>
       {product.name} | {product.price}$ | Quantity:
       <Button
-        className={classNames("btn-miniaction", `btn-miniaction-${theme}`)}
+        className={classNames("btn-miniaction", "btn-miniaction")}
         disabled={amount === Order.MinOrder}
         title="-"
         onClick={() => {
@@ -22,7 +20,7 @@ export const Product = ({ product }) => {
       />
       {amount}
       <Button
-        className={classNames("btn-miniaction", `btn-miniaction-${theme}`)}
+        className={classNames("btn-miniaction", "btn-miniaction")}
         disabled={amount === Order.MaxOrder}
         title="+"
         onClick={() => {

@@ -1,22 +1,19 @@
-import React, { useContext } from "react";
+import React from "react";
 import { restaurants } from "../../../materials/mock";
 import { Button } from "../Button/component";
 import styles from "./styles.module.scss";
-import { ThemeContext } from "../../contexts/ThemeProvider";
 import classNames from "classnames";
 
 export const RestaurantTabs = ({
   activeRestaurantId,
   handleRestaurantClick,
 }) => {
-  const [theme] = useContext(ThemeContext);
-
   return (
     <div className={styles.root}>
       {restaurants.map(({ name, id }) => (
         <Button
           key={id}
-          className={classNames(`btn-primary-${theme}`, {
+          className={classNames("btn-primary", {
             ["active"]: activeRestaurantId === id,
           })}
           onClick={() => {

@@ -12,10 +12,12 @@ export const Header = ({ restaurantName }) => {
     <div className={styles.root}>
       <h1 className={styles.name}>{restaurantName}</h1>
       <Button
-        className={classNames(`btn-primary-${theme}`, styles["theme-switcher"])}
+        className={classNames("btn-primary", styles["theme-switcher"])}
         title={theme}
         onClick={() => {
-          setTheme((prev) => (prev === Theme.Light ? Theme.Dark : Theme.Light));
+          setTheme((prev) =>
+            prev === Theme.Default ? Theme.Dark : Theme.Default
+          );
         }}
       />
     </div>
