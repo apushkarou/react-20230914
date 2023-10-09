@@ -1,18 +1,26 @@
 import React from "react";
 import { restaurants } from "../../../materials/mock";
+import { Button } from "../Button/component";
+import styles from "./styles.module.scss";
+import classNames from "classnames";
 
-export const RestaurantTabs = ({ handleRestaurantClick }) => {
+export const RestaurantTabs = ({
+  activeRestaurantId,
+  handleRestaurantClick,
+}) => {
   return (
-    <div style={{ display: "flex", gap: 10, marginBottom: 20 }}>
+    <div className={styles.root}>
       {restaurants.map(({ name, id }) => (
-        <button
+        <Button
           key={id}
+          className={classNames("btn-primary", {
+            ["active"]: activeRestaurantId === id,
+          })}
           onClick={() => {
             handleRestaurantClick(id);
           }}
-        >
-          {name}
-        </button>
+          title={name}
+        />
       ))}
     </div>
   );
