@@ -1,12 +1,12 @@
 import React from "react";
 import { Review } from "../Review/component";
 
-export const Reviews = ({ reviews }) => {
+export const Reviews = ({ reviewsIds }) => {
   return (
     <div>
       <h3>Review:</h3>
-      {reviews.map(({ id, user, text, rating }) => (
-        <Review key={id} user={user} text={text} rating={rating} />
+      {reviewsIds.map((id) => (
+        <Review key={id} reviewId={id} />
       ))}
     </div>
   );

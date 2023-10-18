@@ -1,12 +1,13 @@
 import React from "react";
-import { Product } from "../Product/component";
+import { Dishes } from "../Dishes/component";
 
-export const Menu = ({ menu }) => {
+export const Menu = ({ dishesIds }) => {
   return (
     <div>
       <h3>Menu</h3>
-      {menu.map(({ id, ...product }) => (
-        <Product key={id} product={product} />
+
+      {dishesIds.map((id) => (
+        <Dishes key={id} dishId={id} />
       ))}
     </div>
   );
