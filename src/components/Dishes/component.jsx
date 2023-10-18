@@ -4,7 +4,7 @@ import { Order } from "../../constants/matcher";
 import { Button } from "../Button/component";
 import classNames from "classnames";
 
-export const Product = ({ product }) => {
+export const Dishes = ({ product }) => {
   const [amount, setAmount] = useState(0);
 
   return (

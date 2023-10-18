@@ -1,12 +1,17 @@
 import React from "react";
-import { Product } from "../Product/component";
+import { Dishes } from "../Dishes/component";
+import { useSelector } from "react-redux";
+import { selectDishesModule } from "../../features/dishes/selectors";
 
-export const Menu = ({ menu }) => {
+export const Menu = ({ dishesIds }) => {
+  const dishes = useSelector(selectDishesModule);
+
   return (
     <div>
       <h3>Menu</h3>
-      {menu.map(({ id, ...product }) => (
-        <Product key={id} product={product} />
+
+      {dishesIds.map((id) => (
+        <Dishes key={id} product={dishes.entities[id]} />
       ))}
     </div>
   );

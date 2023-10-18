@@ -1,12 +1,16 @@
 import React from "react";
 import { Review } from "../Review/component";
+import { useSelector } from "react-redux";
+import { selectReviewsModule } from "../../features/reviews/selectors";
 
-export const Reviews = ({ reviews }) => {
+export const Reviews = ({ reviewsIds }) => {
+  const reviews = useSelector(selectReviewsModule);
+
   return (
     <div>
       <h3>Review:</h3>
-      {reviews.map(({ id, user, text, rating }) => (
-        <Review key={id} user={user} text={text} rating={rating} />
+      {reviewsIds.map((id) => (
+        <Review key={id} review={reviews.entities[id]} />
       ))}
     </div>
   );

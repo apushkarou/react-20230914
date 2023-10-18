@@ -1,16 +1,20 @@
 import React from "react";
-import { restaurants } from "../../../materials/mock";
 import { Button } from "../Button/component";
 import styles from "./styles.module.scss";
 import classNames from "classnames";
+import { useSelector } from "react-redux";
+import { selectRestaurantsModule } from "../../features/restaurant/selectors";
 
 export const RestaurantTabs = ({
   activeRestaurantId,
   handleRestaurantClick,
+  restaurantIds,
 }) => {
+  const restaurants = useSelector(selectRestaurantsModule);
+
   return (
     <div className={styles.root}>
-      {restaurants.map(({ name, id }) => (
+      {restaurantIds.map((id) => (
         <Button
           key={id}
           className={classNames("btn-primary", {
@@ -19,7 +23,7 @@ export const RestaurantTabs = ({
           onClick={() => {
             handleRestaurantClick(id);
           }}
-          title={name}
+          title={restaurants.entities[id].name}
         />
       ))}
     </div>
