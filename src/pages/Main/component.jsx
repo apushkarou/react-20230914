@@ -1,33 +1,29 @@
 import { useState } from "react";
-import { RestaurantTabs } from "../../components/RestarantTabs/component";
-import { restaurants } from "../../../materials/mock";
 import { Restaurant } from "../../components/Restaurant/component";
 import { ThemeProvider } from "../../contexts/ThemeProvider";
 import { Header } from "../../components/Header/component";
 import { Footer } from "../../components/Footer/component";
-
 import "./base.scss";
 import "./components.scss";
+import { useSelector } from "react-redux";
+import { RestaurantTabs } from "../../components/RestaurantTabs/component";
+import { selectInitialRestaurantOnLoad } from "../../features/restaurant/selectors";
 
 export const MainPage = () => {
-  const [activeRestaurant, setActiveRestaurant] = useState(restaurants[0]);
+  const initialRestaurant = useSelector(selectInitialRestaurantOnLoad);
+  const [activeRestaurantId, setActiveRestaurant] = useState(initialRestaurant);
 
-  if (!restaurants?.length) {
-    return false;
-  }
-
-  const handleRestaurantClick = (id) => {
-    setActiveRestaurant(restaurants.find((rests) => rests.id === id));
-  };
+  const handleRestaurantClick = (id) => setActiveRestaurant(id);
 
   return (
     <ThemeProvider>
-      <Header restaurantName={activeRestaurant.name} />
+      <Header restaurantId={activeRestaurantId} />
       <RestaurantTabs
-        activeRestaurantId={activeRestaurant.id}
+        activeRestaurantId={activeRestaurantId}
         handleRestaurantClick={handleRestaurantClick}
       />
-      <Restaurant restaurant={activeRestaurant} />
+
+      {activeRestaurantId && <Restaurant restaurantId={activeRestaurantId} />}
       <Footer />
     </ThemeProvider>
   );

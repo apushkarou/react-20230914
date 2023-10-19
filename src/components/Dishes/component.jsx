@@ -3,13 +3,20 @@ import styles from "./styles.module.scss";
 import { Order } from "../../constants/matcher";
 import { Button } from "../Button/component";
 import classNames from "classnames";
+import { useSelector } from "react-redux";
+import { selectDishById } from "../../features/dishes/selectors";
 
-export const Product = ({ product }) => {
+export const Dishes = ({ dishId }) => {
+  const dish = useSelector((store) => selectDishById(store, dishId));
   const [amount, setAmount] = useState(0);
+
+  if (!dish) return false;
+
+  const { name, price } = dish;
 
   return (
     <div className={styles.root}>
-      {product.name} | {product.price}$ | Quantity:
+      {name} | {price}$ | Quantity:
       <Button
         className={classNames("btn-miniaction", "btn-miniaction")}
         disabled={amount === Order.MinOrder}
