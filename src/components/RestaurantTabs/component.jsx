@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./styles.module.scss";
 import { useSelector } from "react-redux";
-import { selectRestaurantsIds } from "../../features/restaurant/selectors";
+import { selectRestaurantsIds } from "rdx/features/restaurant/selectors";
 import { RestaurantTab } from "../RestaurantTab/component";
 
 export const RestaurantTabs = ({

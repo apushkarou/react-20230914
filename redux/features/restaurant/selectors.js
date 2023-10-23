@@ -11,4 +11,4 @@ export const selectInitialRestaurantOnLoad = (store) =>
   selectRestaurantsModule(store).ids[0];
 
 export const selectRestaurantNameById = (store, id) =>
-  selectRestaurantById(store, id).name;
+  selectRestaurantById(store, id)?.name;

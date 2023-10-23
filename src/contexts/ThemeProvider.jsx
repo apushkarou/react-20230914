@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { Theme } from "../constants/matcher";
+import { Theme } from "src/constants/matcher";
 
 export const ThemeContext = createContext();
 

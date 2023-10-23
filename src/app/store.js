@@ -1,8 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import restaurants from "../features/restaurant/restaurantSlice";
-import dishes from "../features/dishes/dishesSlice";
-import reviews from "../features/reviews/reviewsSlice";
-import users from "../features/users/usersSlice";
+import restaurants from "rdx/features/restaurant/restaurantSlice";
+import dishes from "rdx/features/dishes/dishesSlice";
+import reviews from "rdx/features/reviews/reviewsSlice";
+import users from "rdx/features/users/usersSlice";
+import request from "src/ui/request";
 
 export const store = configureStore({
   reducer: {
@@ -10,5 +11,6 @@ export const store = configureStore({
     dishes,
     reviews,
     users,
+    request,
   },
 });

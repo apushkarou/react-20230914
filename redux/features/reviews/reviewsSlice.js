@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { normalizedReviews } from "../../constants/normolized-mock";
+import { normalizedReviews } from "src/constants/normolized-mock";
 
 const initialState = {
   entities: normalizedReviews.reduce((acc, review) => {

@@ -5,7 +5,7 @@ import styles from "./styles.module.scss";
 import { Button } from "../Button/component";
 import classNames from "classnames";
 import { useSelector } from "react-redux";
-import { selectRestaurantNameById } from "../../features/restaurant/selectors";
+import { selectRestaurantNameById } from "rdx/features/restaurant/selectors";
 
 export const Header = ({ restaurantId }) => {
   const name = useSelector((store) =>
