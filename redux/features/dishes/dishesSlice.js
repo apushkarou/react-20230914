@@ -4,7 +4,7 @@ import { fetchDishesByRestaurantId } from "./thunks/get-dishes";
 
 const entityAdapter = createEntityAdapter();
 
-export const dishesSlice = createSlice({
+export const { reducer } = createSlice({
   name: "dishes",
   initialState: entityAdapter.getInitialState({ status: StatusCodes.Idle }),
   extraReducers: (builder) => {
@@ -18,4 +18,4 @@ export const dishesSlice = createSlice({
   },
 });
 
-export default dishesSlice.reducer;
+export default reducer;
