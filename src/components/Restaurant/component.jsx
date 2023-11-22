@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { Menu } from "../Menu/component";
+import React from "react";
 import { Reviews } from "../Reviews/component";
 import styles from "./styles.module.scss";
 import { ModalReviewForm } from "../ModalReviewForm/component";
@@ -20,7 +19,7 @@ export const Restaurant = ({ restaurantId }) => {
     <div className={styles.root}>
       <h2>{restaurant.name}</h2>
       {menu && <MenuContainer menu={menu} restaurantId={restaurantId} />}
-      {reviews && <Reviews reviewsIds={reviews} />}
+      {reviews && <Reviews reviewsIds={reviews} restaurantId={restaurantId} />}
       <ModalReviewForm
         titleOpen="Open Review Form"
         btnStyles={styles["modal-button"]}

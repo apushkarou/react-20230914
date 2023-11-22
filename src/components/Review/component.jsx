@@ -1,17 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { selectReviewById } from "rdx/features/reviews/selectors";
+
 import { selectUserNameById } from "rdx/features/users/selectors";
 
-export const Review = ({ reviewId }) => {
-  const review = useSelector((store) => selectReviewById(store, reviewId));
-  const userName = useSelector((store) =>
-    selectUserNameById(store, review.userId)
-  );
-
-  if (!review) return false;
-
-  const { text, rating } = review;
+export const Review = ({ review }) => {
+  const { text, rating, userId } = review;
+  const userName = useSelector((store) => selectUserNameById(store, userId));
 
   return (
     <div>

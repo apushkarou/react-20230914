@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { Urls } from "../../../../src/constants/matcher";
+import { selectReviewById, selectReviewIds } from "../selectors";
 
 export const fetchReviewsByRestaurantId = createAsyncThunk(
   "reviews/fetchReviewsByRestaurantId",
@@ -12,10 +13,14 @@ export const fetchReviewsByRestaurantId = createAsyncThunk(
   },
   {
     condition: (restaurantId, { getState }) => {
-      return true;
-
       const state = getState();
-      // const restaurantReviews =
+      const restaurantReviews = selectReviewById(state, restaurantId);
+      const reviewIds = selectReviewIds(state);
+
+      return (
+        restaurantReviews &&
+        restaurantReviews.some((reviewId) => reviewIds.includes(reviewId))
+      );
     },
   }
 );
