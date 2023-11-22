@@ -14,3 +14,7 @@ export const StatusCodes = {
   Fulfilled: "fulfilled",
   Rejected: "rejected",
 };
+
+export const Urls = {
+  ServerBase: "http://localhost:3001/api",
+};

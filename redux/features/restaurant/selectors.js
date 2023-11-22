@@ -12,3 +12,6 @@ export const selectInitialRestaurantOnLoad = (store) =>
 
 export const selectRestaurantNameById = (store, id) =>
   selectRestaurantById(store, id)?.name;
+
+export const selectRestaurantMenu = (store, restaurantId) =>
+  selectRestaurantById(store, restaurantId).menu;

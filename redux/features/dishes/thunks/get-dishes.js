@@ -1,25 +1,27 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { selectDishesIds } from "../selectors";
+import { selectRestaurantMenu } from "../../restaurant/selectors";
+import { Urls } from "../../../../src/constants/matcher";
 
 export const fetchDishesByRestaurantId = createAsyncThunk(
   "restaurants/fetchDishesByRestaurantId",
   async (restaurantId) => {
     const response = await fetch(
-      `http://localhost:3001/api/dishes?restaurantId=${restaurantId}`
+      `${Urls.ServerBase}/dishes?restaurantId=${restaurantId}`
     );
 
     return await response.json();
   },
   {
     condition: (restaurantId, { getState }) => {
-      const { restaurants, dishes } = getState();
+      const state = getState();
+      const { dishes } = state;
+      const restaurantMenu = selectRestaurantMenu(state, restaurantId);
 
-      if (
-        dishes.ids.some(
-          (id) => id === restaurants.entities[restaurantId].menu[0]
-        )
-      ) {
-        return false;
-      }
+      return (
+        restaurantMenu &&
+        restaurantMenu.some((dishId) => !dishes.ids.includes(dishId))
+      );
     },
   }
 );
