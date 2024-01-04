@@ -9,6 +9,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { RestaurantTabs } from "../../components/RestaurantTabs/component";
 import { selectInitialRestaurantOnLoad } from "rdx/features/restaurant/selectors";
 import { fetchRestaurants } from "../../../redux/features/restaurant/thunks/get-restaurants";
+import styles from "./styles.module.scss";
+import { Cart } from "../../components/Cart/component";
 
 export const MainPage = () => {
   const initialRestaurant = useSelector(selectInitialRestaurantOnLoad);
@@ -28,8 +30,10 @@ export const MainPage = () => {
         activeRestaurantId={activeRestaurantId}
         handleRestaurantClick={handleRestaurantClick}
       />
-
-      {activeRestaurantId && <Restaurant restaurantId={activeRestaurantId} />}
+      <div className={styles["main-wrapper"]}>
+        {activeRestaurantId && <Restaurant restaurantId={activeRestaurantId} />}
+        <Cart />
+      </div>
       <Footer />
     </ThemeProvider>
   );
