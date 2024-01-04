@@ -1,10 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { selectDishesIds } from "../selectors";
 import { selectRestaurantMenu } from "../../restaurant/selectors";
-import { Urls } from "../../../../src/constants/matcher";
+import { Thunks, Urls } from "../../../../src/constants/matcher";
 
 export const fetchDishesByRestaurantId = createAsyncThunk(
-  "restaurants/fetchDishesByRestaurantId",
+  Thunks.fetchDishes,
   async (restaurantId) => {
     const response = await fetch(
       `${Urls.ServerBase}/dishes?restaurantId=${restaurantId}`

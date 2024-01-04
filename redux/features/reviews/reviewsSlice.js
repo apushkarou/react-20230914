@@ -20,7 +20,6 @@ export const { reducer } = createSlice({
     builder.addCase(
       fetchReviewsByRestaurantId.fulfilled,
       (state, { payload } = {}) => {
-        console.log(payload);
         entityAdapter.setMany(state, payload);
       }
     );

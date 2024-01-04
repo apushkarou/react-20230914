@@ -3,7 +3,6 @@ import { Review } from "./component";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUsers } from "../../../redux/features/users/thunks/get-users";
 import { selectReviewById } from "../../../redux/features/reviews/selectors";
-import { selectUserNameById } from "../../../redux/features/users/selectors";
 
 export default function ReviewContainer({ reviewId }) {
   const dispatch = useDispatch();

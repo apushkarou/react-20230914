@@ -18,3 +18,14 @@ export const StatusCodes = {
 export const Urls = {
   ServerBase: "http://localhost:3001/api",
 };
+
+export const Actions = {
+  Cart: {
+    increment: "cart/increment",
+    decrement: "cart/decrement",
+  },
+};
+
+export const Thunks = {
+  fetchDishes: "restaurants/fetchDishesByRestaurantId",
+};
