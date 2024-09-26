@@ -1,12 +1,25 @@
-import React from "react";
-import { Review } from "../Review/component";
+import React, { useEffect } from "react";
 
-export const Reviews = ({ reviewsIds }) => {
+import ReviewContainer from "../Review/container";
+import { useDispatch } from "react-redux";
+import { fetchReviewsByRestaurantId } from "../../../redux/features/reviews/thunks/get-reviews";
+
+export const Reviews = ({ reviewsIds, restaurantId }) => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchReviewsByRestaurantId(restaurantId));
+
+    // return () => {
+    //   second
+    // }
+  }, [restaurantId]);
+
   return (
     <div>
       <h3>Review:</h3>
       {reviewsIds.map((id) => (
-        <Review key={id} reviewId={id} />
+        <ReviewContainer key={id} reviewId={id} />
       ))}
     </div>
   );

@@ -1,14 +1,20 @@
 import React, { useState } from "react";
 import styles from "./styles.module.scss";
-import { Order } from "../../constants/matcher";
-import { Button } from "../Button/component";
+import { Order } from "src/constants/matcher";
+import { Button } from "components/Button/component";
 import classNames from "classnames";
-import { useSelector } from "react-redux";
-import { selectDishById } from "../../features/dishes/selectors";
+import { useDispatch, useSelector } from "react-redux";
+import { selectDishById } from "rdx/features/dishes/selectors";
+import { decrement, increment } from "../../ui/cart/actions";
+import { selectDishQty } from "../../ui/cart/selectors";
 
 export const Dishes = ({ dishId }) => {
-  const dish = useSelector((store) => selectDishById(store, dishId));
-  const [amount, setAmount] = useState(0);
+  const dish = useSelector((store) => {
+    return selectDishById(store, dishId);
+  });
+
+  const dispatch = useDispatch();
+  const amount = useSelector((state) => selectDishQty(state, dishId));
 
   if (!dish) return false;
 
@@ -22,7 +28,7 @@ export const Dishes = ({ dishId }) => {
         disabled={amount === Order.MinOrder}
         title="-"
         onClick={() => {
-          if (amount > 0 && amount <= 5) setAmount(amount - 1);
+          dispatch(decrement(dishId));
         }}
       />
       {amount}
@@ -31,7 +37,7 @@ export const Dishes = ({ dishId }) => {
         disabled={amount === Order.MaxOrder}
         title="+"
         onClick={() => {
-          setAmount(amount + 1);
+          dispatch(increment(dishId));
         }}
       />
     </div>

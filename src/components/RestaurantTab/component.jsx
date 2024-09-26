@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "../Button/component";
 import classNames from "classnames";
 import { useSelector } from "react-redux";
-import { selectRestaurantNameById } from "../../features/restaurant/selectors";
+import { selectRestaurantNameById } from "rdx/features/restaurant/selectors";
 
 export const RestaurantTab = ({
   restaurantId,
